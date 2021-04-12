@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-sm bg-light navbar-light justify-content-center" style="margin-bottom: 2em; padding: 0">
+    <ul class="navbar-nav">
+        <li routerLinkActive="active"><a routerLink="/Carnet" class="nav-link"><h4>Carnet</h4></a></li>
+        <li routerLinkActive="active"><a routerLink="/Profile" class="nav-link"><h4>Profile</h4></a></li>
+    </ul>
+</nav>
+
+<div class="infosDiv">
+    <div class="infos">
+        <div><h4>Login : </h4><span>{{ data.login }}</span></div>
+        <div><h4>Age : </h4><span class="{{!data.age ? 'undefined' : ''}}">{{ data.age ? data.age : "Non Définis" }}</span></div>
+        <div><h4>Famille : </h4><span class="{{!data.famille ? 'undefined' : ''}}">{{ data.famille ? data.famille : "Non Définis" }}</span></div>
+        <div><h4>Race : </h4><span class="{{!data.race ? 'undefined' : ''}}">{{ data.race ? data.race : "Non Définis" }}</span></div>
+        <div><h4>Nourriture : </h4><span class="{{!data.nourriture ? 'undefined' : ''}}">{{ data.nourriture ? data.nourriture : "Non Définis" }}</span></div>
+    </div>
+</div>
+
+<div class="container-fluid" style="margin: 0; padding: 0">
+    <table class="table table-dark table-hover" *ngIf="users.length > 0">
+        <thead>
+          <tr>
+            <th>Login</th>
+            <th>Age</th>
+            <th>Famille</th>
+            <th>Race</th>
+            <th>Nourriture</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{user.login}}</td>
+            <td>{{user.age ? user.age : "Inconnue" }}</td>
+            <td>{{ user.famille ? user.famille : "Inconnue" }}</td>
+            <td>{{ user.race ? user.race : "Inconnue" }}</td>
+            <td>{{ user.nourriture ? user.nourriture : "Inconnue" }}</td>
+            <td style="width: 200px" *ngIf="user.friend"><button type="button" class="btn btn-danger" (click)="RemoveFriend(user.login)">Retirer Ami</button></td>
+            <td style="width: 200px" *ngIf="!user.friend"><button type="button" class="btn btn-success" (click)="AddFriend(user.login)">Ajouter Ami</button></td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+<button type="button" style="position: absolute; right: 1em; top: 1em" class="btn btn-danger" (click)="Deconnexion()">Se Déconnecter</button>

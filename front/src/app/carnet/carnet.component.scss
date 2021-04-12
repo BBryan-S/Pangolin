@@ -1,0 +1,28 @@
+.infosDiv {
+    margin-inline: 3em;
+    margin-bottom: 2em;
+    background-color: rgba(128, 128, 128, 0.076);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .infos {
+        display: flex;
+        flex-direction: column;
+        div {
+            display: flex;
+            h4 {
+                font-size: 1.2em;
+                line-height: 1em;
+                font-weight: bold;
+                width: 6vw;
+            }
+            .undefined {
+                color: red;
+            }
+            span {
+                font-weight: normal;
+                margin-left: 1em;
+            }
+        }
+    }
+}
